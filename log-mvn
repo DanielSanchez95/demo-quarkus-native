@@ -1,0 +1,158 @@
+# mvn clean package -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21.0.7
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------< org.uth:demo-quarkus >------------------------
+[INFO] Building demo-quarkus 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ demo-quarkus ---
+[INFO] Deleting /root/demo-keralty-native/demo-quarkus-native/target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ demo-quarkus ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO]
+[INFO] --- quarkus:3.24.3:generate-code (default) @ demo-quarkus ---
+[INFO]
+[INFO] --- compiler:3.14.0:compile (default-compile) @ demo-quarkus ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/classes
+[INFO]
+[INFO] --- quarkus:3.24.3:generate-code-tests (default) @ demo-quarkus ---
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ demo-quarkus ---
+[INFO] skip non existing resourceDirectory /root/demo-keralty-native/demo-quarkus-native/src/test/resources
+[INFO]
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ demo-quarkus ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.5.3:test (default-test) @ demo-quarkus ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.uth.GreetingResourceTest
+2025-07-10 22:39:27,813 INFO  [io.quarkus] (main) demo-quarkus 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.24.3) started in 5.867s. Listening on: http://localhost:8081
+2025-07-10 22:39:27,816 INFO  [io.quarkus] (main) Profile test activated.
+2025-07-10 22:39:27,817 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy, smallrye-context-propagation, vertx]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.015 s -- in org.uth.GreetingResourceTest
+2025-07-10 22:39:30,496 WARNING [org.jun.jup.eng.des.AbstractExtensionContext] (main) Type implements CloseableResource but not AutoCloseable: io.quarkus.test.junit.QuarkusTestExtension$ExtensionState
+2025-07-10 22:39:30,605 INFO  [io.quarkus] (main) demo-quarkus stopped in 0.101s
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jar:3.4.1:jar (default-jar) @ demo-quarkus ---
+[INFO] Building jar: /root/demo-keralty-native/demo-quarkus-native/target/demo-quarkus-1.0.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- quarkus:3.24.3:build (default) @ demo-quarkus ---
+[INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building native image source jar: /root/demo-keralty-native/demo-quarkus-native/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/demo-quarkus-1.0.0-SNAPSHOT-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Building native image from /root/demo-keralty-native/demo-quarkus-native/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar/demo-quarkus-1.0.0-SNAPSHOT-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildContainerRunner] Using podman to run the native image builder
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildContainerRunner] Pulling builder image 'quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21.0.7'
+Trying to pull quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21.0.7...
+Getting image source signatures
+Copying blob e5df18424820 done   |
+Copying blob ea205eb00fc3 done   |
+Copying blob d1b42a21457f done   |
+Copying blob f96bfc29e11a done   |
+Copying blob 3126bfe05acc done   |
+Copying blob e7343cb6ac5b done   |
+Copying blob b21051e0e42b done   |
+Copying blob b87f7739e958 done   |
+Copying blob a8b727ce23a0 done   |
+Copying blob b8934667ed0e done   |
+Copying blob 039a18f36332 done   |
+Copying blob 5cddf6dd4f4b done   |
+Copying blob 4c4c84bdc2f9 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 4f4fb700ef54 skipped: already exists
+Copying config 3bc3766cd9 done   |
+Writing manifest to image destination
+3bc3766cd9b422e5fd785bfc1035d05de08f19d09fac142596f2e22c4e4d4ce2
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Running Quarkus native-image plugin on MANDREL 23.1.7.0 JDK 21.0.7+6-LTS
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildRunner] podman run --env LANG=C --rm --user 0:0 -v /root/demo-keralty-native/demo-quarkus-native/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar:/project:z --name build-native-SoQIV quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21.0.7 -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dlogging.initial-configurator.min-level=500 -J-Duser.language=en -J-Duser.country=US -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=3 -H:+UnlockExperimentalVMOptions -H:IncludeLocales=en-US -H:-UnlockExperimentalVMOptions -J-Dfile.encoding=UTF-8 -J--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.jdk=ALL-UNNAMED --features=io.quarkus.runner.Feature,io.quarkus.runtime.graal.DisableLoggingFeature,io.quarkus.runtime.graal.SkipConsoleServiceProvidersFeature -J--add-exports=java.security.jgss/sun.security.krb5=ALL-UNNAMED -J--add-exports=java.security.jgss/sun.security.jgss=ALL-UNNAMED -J--add-opens=java.base/java.text=ALL-UNNAMED -J--add-opens=java.base/java.io=ALL-UNNAMED -J--add-opens=java.base/java.lang.invoke=ALL-UNNAMED -J--add-opens=java.base/java.util=ALL-UNNAMED -H:+UnlockExperimentalVMOptions -H:BuildOutputJSONFile=demo-quarkus-1.0.0-SNAPSHOT-runner-build-output-stats.json -H:-UnlockExperimentalVMOptions -H:+UnlockExperimentalVMOptions -H:+GenerateBuildArtifactsFile -H:-UnlockExperimentalVMOptions --strict-image-heap -H:+UnlockExperimentalVMOptions -H:+AllowFoldMethods -H:-UnlockExperimentalVMOptions -J-Djava.awt.headless=true --no-fallback --link-at-build-time -H:+UnlockExperimentalVMOptions -H:+ReportExceptionStackTraces -H:-UnlockExperimentalVMOptions -H:-AddAllCharsets --enable-url-protocols=http --enable-monitoring=heapdump -H:+UnlockExperimentalVMOptions -H:-UseServiceLoaderFeature -H:-UnlockExperimentalVMOptions -J--add-exports=org.graalvm.nativeimage/org.graalvm.nativeimage.impl=ALL-UNNAMED --exclude-config io\.netty\.netty-codec /META-INF/native-image/io\.netty/netty-codec/generated/handlers/reflect-config\.json --exclude-config io\.netty\.netty-handler /META-INF/native-image/io\.netty/netty-handler/generated/handlers/reflect-config\.json demo-quarkus-1.0.0-SNAPSHOT-runner -jar demo-quarkus-1.0.0-SNAPSHOT-runner.jar
+========================================================================================================================
+GraalVM Native Image: Generating 'demo-quarkus-1.0.0-SNAPSHOT-runner' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+[1/8] Initializing...                                                                                   (14.2s @ 0.13GB)
+ Java version: 21.0.7+6-LTS, vendor version: Mandrel-23.1.7.0-Final
+ Graal compiler: optimization level: 2, target machine: x86-64-v3
+ C compiler: gcc (redhat, x86_64, 8.5.0)
+ Garbage collector: Serial GC (max heap size: 80% of RAM)
+ 5 user-specific feature(s):
+ - com.oracle.svm.thirdparty.gson.GsonFeature
+ - io.quarkus.runner.Feature: Auto-generated class by Quarkus from the existing extensions
+ - io.quarkus.runtime.graal.DisableLoggingFeature: Adapts logging during the analysis phase
+ - io.quarkus.runtime.graal.SkipConsoleServiceProvidersFeature: Skip unsupported console service providers when quarkus.native.auto-service-loader-registration is false
+ - org.eclipse.angus.activation.nativeimage.AngusActivationFeature
+------------------------------------------------------------------------------------------------------------------------
+ 5 experimental option(s) unlocked:
+ - '-H:+AllowFoldMethods' (origin(s): command line)
+ - '-H:BuildOutputJSONFile' (origin(s): command line)
+ - '-H:-UseServiceLoaderFeature' (origin(s): command line)
+ - '-H:+GenerateBuildArtifactsFile' (origin(s): command line)
+ - '-H:AddOpens' (alternative API option(s): --add-opens java.base/java.lang=ALL-UNNAMED; origin(s): command line)
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 6.18GB of memory (75.6% of 8.18GB system memory, determined at start)
+ - 2 thread(s) (100.0% of 2 available processor(s), determined at start)
+[2/8] Performing analysis...  [*****]                                                                  (138.9s @ 1.05GB)
+   11,519 reachable types   (86.6% of   13,299 total)
+   16,627 reachable fields  (58.7% of   28,321 total)
+   58,503 reachable methods (56.4% of  103,792 total)
+    3,739 types,   128 fields, and 3,631 methods registered for reflection
+       62 types,    67 fields, and    55 methods registered for JNI access
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                              (25.8s @ 1.03GB)
+[4/8] Parsing methods...      [****]                                                                    (15.0s @ 1.12GB)
+[5/8] Inlining methods...     [***]                                                                     (10.3s @ 1.22GB)
+[6/8] Compiling methods...    [***********]                                                            (123.1s @ 0.89GB)
+[7/8] Laying out methods...   [***]                                                                      (8.4s @ 1.23GB)
+[8/8] Creating image...       [****]                                                                    (14.3s @ 0.90GB)
+  23.69MB (46.58%) for code area:    37,371 compilation units
+  26.77MB (52.63%) for image heap:  311,329 objects and 57 resources
+ 408.69kB ( 0.78%) for other data
+  50.86MB in total
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+  12.71MB java.base                                            7.48MB byte[] for code metadata
+   1.33MB svm.jar (Native Image)                               4.05MB byte[] for java.lang.String
+ 998.20kB demo-quarkus-1.0.0-SNAPSHOT-runner.jar               2.83MB java.lang.Class
+ 971.03kB modified-io.vertx.vertx-core-4.5.16.jar              2.81MB java.lang.String
+ 720.93kB org.jboss.resteasy.resteasy-core-6.2.12.Final.jar    1.03MB byte[] for general heap data
+ 638.86kB io.netty.netty-buffer-4.1.121.Final.jar            989.91kB com.oracle.svm.core.hub.DynamicHubCompanion
+ 516.86kB io.netty.netty-common-4.1.121.Final.jar            685.08kB byte[] for reflection metadata
+ 447.33kB com.fasterxml.jackson.core.jackson-core-2.19.1.jar 536.99kB java.lang.String[]
+ 423.87kB io.netty.netty-codec-http-4.1.121.Final.jar        489.23kB java.util.HashMap$Node
+ 385.61kB io.netty.netty-codec-http2-4.1.121.Final.jar       426.38kB java.lang.Object[]
+   4.41MB for 80 more packages                                 5.51MB for 2855 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+------------------------------------------------------------------------------------------------------------------------
+                       34.0s (9.6% of total time) in 2028 GCs | Peak RSS: 2.03GB | CPU load: 1.83
+------------------------------------------------------------------------------------------------------------------------
+Produced artifacts:
+ /project/build-artifacts.json (build_info)
+ /project/demo-quarkus-1.0.0-SNAPSHOT-runner (executable)
+ /project/demo-quarkus-1.0.0-SNAPSHOT-runner-build-output-stats.json (build_info)
+========================================================================================================================
+Finished generating 'demo-quarkus-1.0.0-SNAPSHOT-runner' in 5m 52s.
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildRunner] podman run --env LANG=C --rm --user 0:0 -v /root/demo-keralty-native/demo-quarkus-native/target/demo-quarkus-1.0.0-SNAPSHOT-native-image-source-jar:/project:z --entrypoint /bin/bash quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-21.0.7 -c objcopy --strip-debug demo-quarkus-1.0.0-SNAPSHOT-runner
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 392594ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  06:55 min
+[INFO] Finished at: 2025-07-10T22:46:03-05:00
+[INFO] ------------------------------------------------------------------------
+[root@localhost demo-quarkus-native]#
